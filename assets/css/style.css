@@ -7,12 +7,12 @@ body {
 }
 
 a {
-  color: #7bff00;
+  color: hsla(260 97% 61% / 0.75);
   text-decoration: none;
 }
 
 a:hover {
-  color: #7bff00;
+  color: hsla(260 97% 61% / 0.75);
   text-decoration: none;
 }
 
