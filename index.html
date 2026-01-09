@@ -8,6 +8,9 @@
     <meta content="" name="description" />
     <meta content="" name="keywords" />
 
+    <!-- emailjs library -->
+    <script src="https://cdn.jsdelivr.net/npm/emailjs@3/dist/email.min.js"></script>
+
     <!-- Favicons -->
     <link href="assets/img/profile.jpg" rel="icon" />
 
@@ -127,14 +130,12 @@
           I'm
           <span
             class="typed"
-            data-typed-items="Web Designer, Full-stack Developer, Freelancer, programmer, Project Manager, problem solver, innovater"
+            data-typed-items="Full-stack Developer,programmer , Web Designer, problem solver , Project Manager,Freelancer, innovater"
           ></span>
         </p>
         <br />
         <br />
 
-        <!-- From Uiverse.io by MuhammadHasann -->
-        <!-- your original button (unchanged) -->
         <button class="button" download="Daniel_Melese_Resume.pdf">
           <div class="dots_border"></div>
           <svg
@@ -981,12 +982,7 @@
               </div>
             </div>
             <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-              <form
-                action="forms/contact.php"
-                method="post"
-                role="form"
-                class="php-email-form"
-              >
+              <form id="contact-form" role="form" class="php-email-form">
                 <div class="row">
                   <div class="form-group col-md-6">
                     <label for="name">Your Name</label>
@@ -1034,6 +1030,40 @@
           </div>
         </div>
       </section>
+      <script>
+        emailjs.init({
+          publicKey: "at6x8zRhApZ5qjW1b",
+        });
+
+        const form = document.getElementById("contact-form");
+        const loading = form.querySelector(".loading");
+        const errorMessage = form.querySelector(".error-message");
+        const sentMessage = form.querySelector(".sent-message");
+
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          loading.style.display = "block";
+          errorMessage.style.display = "none";
+          sentMessage.style.display = "none";
+
+          emailjs.sendForm("service_psg5s49", "template_8r8pa9t", form).then(
+            () => {
+              loading.style.display = "none";
+              sentMessage.style.display = "block";
+              form.reset();
+            },
+            (error) => {
+              loading.style.display = "none";
+              errorMessage.innerText =
+                "❌ Message could not be sent. Please try again.";
+              errorMessage.style.display = "block";
+              console.error("EmailJS Error:", error);
+            }
+          );
+        });
+      </script>
+
       <!-- End Contact Section -->
     </main>
     <!-- End #main -->
