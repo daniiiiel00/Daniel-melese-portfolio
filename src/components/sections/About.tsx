@@ -1,10 +1,13 @@
-import { motion } from 'framer-motion';
-import { personalInfo, education } from '../../data/portfolioData';
-import { GraduationCap, Languages, CheckCircle2, Terminal } from 'lucide-react';
+import { motion } from "framer-motion";
+import { personalInfo, education } from "../../data/portfolioData";
+import { GraduationCap, Languages, CheckCircle2, Terminal } from "lucide-react";
 
 export const About = () => {
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-transparent">
+    <section
+      id="about"
+      className="py-24 relative overflow-hidden bg-transparent"
+    >
       {/* Semi-transparent backdrop overlay to allow continuous 3D world visibility */}
       <div className="absolute inset-0 bg-slate-950/25 dark:bg-slate-950/25 light:bg-slate-100/35 backdrop-blur-[1px] pointer-events-none" />
 
@@ -34,11 +37,12 @@ export const About = () => {
 
               <div className="relative rounded-3xl bg-slate-900/60 dark:bg-slate-900/60 light:bg-white/80 border border-indigo-500/20 dark:border-indigo-500/20 light:border-slate-200 p-2.5 overflow-hidden shadow-2xl backdrop-blur-md">
                 <img
-                  src="./assets/images/profile.jpg"
+                  src="./assets/images/profile-transparent.png"
                   alt="Daniel Melese"
                   className="w-full h-[420px] object-cover rounded-2xl object-top group-hover:scale-[1.02] transition-transform duration-500"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = './assets/images/old.jpg';
+                    (e.target as HTMLImageElement).src =
+                      "./assets/images/old.jpg";
                   }}
                 />
 
@@ -69,11 +73,14 @@ export const About = () => {
             className="lg:col-span-7 space-y-6"
           >
             <div className="text-slate-300 dark:text-slate-300 light:text-slate-700 space-y-4 text-base sm:text-lg leading-relaxed">
-              <p>
-                {personalInfo.summary}
-              </p>
+              <p>{personalInfo.summary}</p>
               <p className="text-slate-400 dark:text-slate-400 light:text-slate-600 text-sm sm:text-base">
-                Whether architecting database schemas from scratch in MySQL/PostgreSQL, engineering enterprise Laravel REST APIs, crafting fluid React & Three.js user interfaces, or orchestrating automated CI/CD deployment pipelines on Linux servers, I take immense pride in delivering resilient, high-speed software.
+                Whether architecting database schemas from scratch in
+                MySQL/PostgreSQL, engineering enterprise Laravel REST APIs,
+                crafting fluid React & Three.js user interfaces, or
+                orchestrating automated CI/CD deployment pipelines on Linux
+                servers, I take immense pride in delivering resilient,
+                high-speed software.
               </p>
             </div>
 
@@ -125,7 +132,10 @@ export const About = () => {
             {/* Quick terminal / principles bar */}
             <div className="p-4 rounded-2xl bg-slate-950/60 dark:bg-slate-950/60 light:bg-slate-200/80 border border-slate-800 dark:border-slate-800 light:border-slate-300 font-mono text-xs text-slate-400 dark:text-slate-400 light:text-slate-700 flex items-center gap-3 backdrop-blur-md">
               <Terminal className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Core values: Strict type safety, clean abstractions, high test coverage, end-to-end delivery.</span>
+              <span>
+                Core values: Strict type safety, clean abstractions, high test
+                coverage, end-to-end delivery.
+              </span>
             </div>
           </motion.div>
         </div>
