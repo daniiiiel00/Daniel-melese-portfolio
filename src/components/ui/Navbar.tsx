@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X, FileDown, Sun, Moon } from 'lucide-react';
 import { personalInfo } from '../../data/portfolioData';
 import { useTheme } from '../../context/ThemeContext';
+import { LanguageSelector } from './LanguageSelector';
 
 export const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,7 +38,7 @@ export const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Brand / Logo */}
         <a href="#" className="flex items-center group">
-          <span className="font-extrabold text-2xl tracking-tight text-white dark:text-white text-slate-900">
+          <span className="font-extrabold text-2xl tracking-tight text-white dark:text-white text-slate-950">
             daniel<span className="text-cyan-400">.</span>
           </span>
         </a>
@@ -56,12 +57,15 @@ export const Navbar = () => {
         </nav>
 
         {/* Right CTA Group */}
-        <div className="hidden sm:flex items-center gap-3">
+        <div className="hidden sm:flex items-center gap-2.5">
+          {/* Language Selector */}
+          <LanguageSelector />
+
           {/* Dark / Light Mode Toggle Button */}
           <button
             onClick={toggleTheme}
             aria-label="Toggle theme mode"
-            className="p-2.5 rounded-full bg-white/5 dark:bg-white/5 bg-slate-200 hover:bg-white/10 dark:hover:bg-white/10 hover:bg-slate-300 border border-white/10 dark:border-white/10 border-slate-300 text-slate-300 dark:text-slate-300 text-slate-700 transition-all hover:scale-105 active:scale-95 shadow-sm"
+            className="p-2 rounded-full bg-white/5 dark:bg-white/5 bg-slate-200 hover:bg-white/10 dark:hover:bg-white/10 hover:bg-slate-300 border border-white/10 dark:border-white/10 border-slate-300 text-slate-300 dark:text-slate-300 text-slate-700 transition-all hover:scale-105 active:scale-95 shadow-sm"
           >
             {theme === 'dark' ? (
               <Sun className="w-4 h-4 text-cyan-400" />
@@ -74,15 +78,16 @@ export const Navbar = () => {
           <a
             href={personalInfo.resumeUrl}
             download
-            className="flex items-center gap-2 px-5 py-2 text-xs sm:text-sm font-semibold text-slate-200 dark:text-slate-200 text-slate-800 hover:text-white bg-indigo-600/20 hover:bg-indigo-600/35 border border-indigo-500/40 rounded-full transition-all duration-200 shadow-sm hover:scale-105"
+            className="flex items-center gap-2 px-4 py-2 text-xs sm:text-sm font-semibold text-slate-200 dark:text-slate-200 text-slate-800 hover:text-white bg-indigo-600/20 hover:bg-indigo-600/35 border border-indigo-500/40 rounded-full transition-all duration-200 shadow-sm hover:scale-105"
           >
             <FileDown className="w-4 h-4 text-cyan-400" />
-            <span>Download Resume</span>
+            <span>Resume</span>
           </a>
         </div>
 
-        {/* Mobile Hamburger & Theme Toggle */}
-        <div className="flex lg:hidden items-center gap-2">
+        {/* Mobile Hamburger, Language Selector & Theme Toggle */}
+        <div className="flex sm:hidden items-center gap-1.5">
+          <LanguageSelector />
           <button
             onClick={toggleTheme}
             className="p-2 rounded-full bg-white/5 dark:bg-white/5 bg-slate-200 border border-white/10 dark:border-white/10 border-slate-300 text-slate-300 dark:text-slate-300 text-slate-700"

@@ -118,7 +118,7 @@ export const About = () => {
                     </h4>
                     <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 mt-1 flex items-center gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                      <strong>English:</strong> Professional Working Proficiency
+                      <strong>English:</strong> Working Proficiency
                     </p>
                     <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 mt-1 flex items-center gap-1.5">
                       <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
