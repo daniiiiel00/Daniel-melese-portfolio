@@ -36,6 +36,7 @@ export interface Certification {
   issuer: string;
   date: string;
   highlight?: string;
+  certificateImage?: string;
 }
 
 export interface Education {

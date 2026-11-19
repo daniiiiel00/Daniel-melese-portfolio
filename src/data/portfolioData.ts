@@ -13,6 +13,7 @@ export const personalInfo = {
   location: "Addis Ababa, Ethiopia",
   email: "danielmelese240@gmail.com",
   phone: "+251 939 846 753",
+  telegram: "https://t.me/Andro_medaaaaa",
   github: "https://github.com/daniiiiel00",
   linkedin: "https://linkedin.com/in/daniel-melese-897a4b339",
   resumeUrl: "./assets/Daniel_Melese_Resume.pdf",
@@ -29,7 +30,7 @@ export const experiences: Experience[] = [
   {
     id: "cdiwork",
     company: "CDIWork",
-    location: "USA-based Software Company (Full Time, Onsite)",
+    location: "USA-based Software Company (Full Time, Remote)",
     role: "Frontend Developer",
     period: "Dec 2025 – Present",
     type: "Full Time",
@@ -50,31 +51,31 @@ export const experiences: Experience[] = [
       "GitHub Actions",
     ],
   },
-  {
-    id: "afriwork",
-    company: "Afriwork",
-    location: "Addis Ababa (Full Time, Onsite)",
-    role: "Frontend Developer",
-    period: "Feb 2026 – Present",
-    type: "Full Time",
-    description: [
-      "Hired through Afriwork to build and scale user interfaces with React.js, modern JavaScript, and CSS.",
-      "Translate design systems and Figma prototypes into responsive, accessible, pixel-perfect web experiences across mobile, tablet, and desktop devices.",
-    ],
-    technologies: [
-      "React.js",
-      "TypeScript",
-      "Responsive Design",
-      "CSS3",
-      "Web Accessibility",
-    ],
-  },
+  // {
+  //   id: "afriwork",
+  //   company: "Afriwork",
+  //   location: "Addis Ababa (Full Time, Onsite)",
+  //   role: "Frontend Developer",
+  //   period: "Feb 2026 – Present",
+  //   type: "Full Time",
+  //   description: [
+  //     "Hired through Afriwork to build and scale user interfaces with React.js, modern JavaScript, and CSS.",
+  //     "Translate design systems and Figma prototypes into responsive, accessible, pixel-perfect web experiences across mobile, tablet, and desktop devices.",
+  //   ],
+  //   technologies: [
+  //     "React.js",
+  //     "TypeScript",
+  //     "Responsive Design",
+  //     "CSS3",
+  //     "Web Accessibility",
+  //   ],
+  // },
   {
     id: "ihope",
     company: "iHope Solutions",
-    location: "Software Consultancy",
+    location: "Software Development Company (Full Time, Onsite)",
     role: "Full Stack Developer",
-    period: "Previous Role",
+    period: "Dec 2025 – Present",
     type: "Full Time",
     description: [
       "Engineered full stack applications with Laravel and Filament admin panels, Node.js services, and Next.js / React / TypeScript frontends.",
@@ -284,27 +285,42 @@ export const certifications: Certification[] = [
       "Ministry of Labor and Skills, Federal Democratic Republic of Ethiopia",
     date: "July 2025",
     highlight: "1st Place National Champion",
+    certificateImage:
+      "./assets/images/certficates/Winner, National Skill Competition in Web Development.png",
   },
   {
     id: "cert-2",
+    title: "Gold Medalist, ICT Innovators Competition",
+    issuer: "Addis Ababa Education Bureau",
+    date: "June 2022",
+    highlight: "Gold Medalist",
+    certificateImage:
+      "./assets/images/certficates/Gold Medalist, ICT Innovators Competition.png",
+  },
+  {
+    id: "cert-3",
+    title: "Addis Ababa Education Bureau 1st Place Award, ICT Competition",
+    issuer: "Addis Ababa Education Bureau",
+    date: "Accredited Honors",
+    highlight: "1st Place Award",
+    certificateImage:
+      "./assets/images/certficates/Addis abeba education beru 1st place award ict compitition .png",
+  },
+  {
+    id: "cert-4",
+    title: "High School Innovation Honor Award (School Net System)",
+    issuer: "High School Administration & ICT Department",
+    date: "Innovation Honors",
+    highlight: "System Innovation Award",
+    certificateImage:
+      "./assets/images/certficates/in HIgh school for fixing scholl net system inovattion honor award .png",
+  },
+  {
+    id: "cert-5",
     title: "Artificial Intelligence Fundamentals Nanodegree",
     issuer: "Udacity",
     date: "August 2025",
     highlight: "AI & Machine Learning",
-  },
-  {
-    id: "cert-3",
-    title: "Gold Medalist, ICT Innovators Competition",
-    issuer: "Addis Ababa Education Bureau",
-    date: "June 2022",
-    highlight: "Gold Medal",
-  },
-  {
-    id: "cert-4",
-    title: "15th Addis Ababa City Skills Competition Accrediting Certificate",
-    issuer: "Labor and Skills Bureau",
-    date: "Accredited Specialist",
-    highlight: "City Level Honors",
   },
 ];
 

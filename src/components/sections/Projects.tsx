@@ -1,16 +1,20 @@
-import { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { projects } from '../../data/portfolioData';
-import { ExternalLink, Sparkles, Layers, ArrowUpRight } from 'lucide-react';
-import { TechIcon } from '../ui/TechIcon';
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { projects } from "../../data/portfolioData";
+import { ExternalLink, Layers, ArrowUpRight } from "lucide-react";
+import { TechIcon } from "../ui/TechIcon";
 
 export const ProjectsSection = () => {
-  const [filter, setFilter] = useState<'all' | 'featured'>('all');
+  const [filter, setFilter] = useState<"all" | "featured">("all");
 
-  const filteredProjects = filter === 'featured' ? projects.filter((p) => p.featured) : projects;
+  const filteredProjects =
+    filter === "featured" ? projects.filter((p) => p.featured) : projects;
 
   return (
-    <section id="projects" className="py-24 relative bg-transparent overflow-hidden">
+    <section
+      id="projects"
+      className="py-24 relative bg-transparent overflow-hidden"
+    >
       {/* Semi-transparent backdrop overlay to allow continuous 3D world visibility */}
       <div className="absolute inset-0 bg-slate-950/20 dark:bg-slate-950/20 bg-slate-100/30 backdrop-blur-[1px] pointer-events-none" />
 
@@ -18,35 +22,36 @@ export const ProjectsSection = () => {
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/25 text-cyan-400 text-xs font-mono font-semibold mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-            <span>ASYMMETRIC 3D BENTO GALLERY</span>
+            <Layers className="w-3.5 h-3.5 text-indigo-400" />
+            <span>PROJECT GALLERY</span>
           </div>
           <h2 className="text-3xl sm:text-5xl font-black text-white dark:text-white text-slate-950 tracking-tight">
             Selected Works & Platforms
           </h2>
           <div className="w-20 h-1 bg-gradient-to-r from-cyan-400 via-indigo-500 to-purple-500 mx-auto mt-4 rounded-full" />
           <p className="text-slate-400 dark:text-slate-400 text-slate-600 text-sm sm:text-base mt-4">
-            Production marketplaces, e-learning systems, and commerce platforms with full-stack architectural ownership.
+            Production marketplaces, e-learning systems, and commerce platforms
+            with full-stack architectural ownership.
           </p>
 
           {/* Filter Pills */}
           <div className="inline-flex items-center gap-1.5 p-1 rounded-full bg-slate-900/60 dark:bg-slate-900/60 bg-white/80 border border-white/10 dark:border-white/10 border-slate-300 mt-8 backdrop-blur-md shadow-lg">
             <button
-              onClick={() => setFilter('all')}
+              onClick={() => setFilter("all")}
               className={`px-5 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
-                filter === 'all'
-                  ? 'bg-gradient-to-r from-indigo-600 to-cyan-500 text-white shadow-md shadow-indigo-600/30'
-                  : 'text-slate-400 dark:text-slate-400 text-slate-700 hover:text-white'
+                filter === "all"
+                  ? "bg-gradient-to-r from-indigo-600 to-cyan-500 text-white shadow-md shadow-indigo-600/30"
+                  : "text-slate-400 dark:text-slate-400 text-slate-700 hover:text-white"
               }`}
             >
               All Projects ({projects.length})
             </button>
             <button
-              onClick={() => setFilter('featured')}
+              onClick={() => setFilter("featured")}
               className={`px-5 py-2 rounded-full text-xs font-bold transition-all duration-200 ${
-                filter === 'featured'
-                  ? 'bg-gradient-to-r from-indigo-600 to-cyan-500 text-white shadow-md shadow-indigo-600/30'
-                  : 'text-slate-400 dark:text-slate-400 text-slate-700 hover:text-white'
+                filter === "featured"
+                  ? "bg-gradient-to-r from-indigo-600 to-cyan-500 text-white shadow-md shadow-indigo-600/30"
+                  : "text-slate-400 dark:text-slate-400 text-slate-700 hover:text-white"
               }`}
             >
               Featured Highlights
@@ -54,18 +59,21 @@ export const ProjectsSection = () => {
           </div>
         </div>
 
-        {/* ================= ASYMMETRIC 3D BENTO GALLERY ================= */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6 auto-rows-[340px]">
+        {/* ================= ASYMMETRIC 3D BENTO GALLERY (SLIDABLE ON MOBILE) ================= */}
+        <div
+          className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 pt-2 scroll-smooth md:grid md:grid-cols-2 lg:grid-cols-12 md:gap-6 md:auto-rows-[340px] md:overflow-visible md:pb-0"
+          style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
           <AnimatePresence>
             {filteredProjects.map((project, index) => {
-              // Asymmetric spans for 3D bento feeling
+              // Asymmetric spans for 3D bento feeling on desktop
               const isLarge = index === 0; // First item is large panoramic
               const isMedium = index === 1 || index === 2; // Medium cards
               const colSpanClass = isLarge
-                ? 'lg:col-span-8 lg:row-span-2'
+                ? "lg:col-span-8 lg:row-span-2"
                 : isMedium
-                ? 'lg:col-span-4 lg:row-span-1'
-                : 'lg:col-span-4 lg:row-span-1';
+                  ? "lg:col-span-4 lg:row-span-1"
+                  : "lg:col-span-4 lg:row-span-1";
 
               return (
                 <motion.div
@@ -75,7 +83,7 @@ export const ProjectsSection = () => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.4, delay: index * 0.05 }}
-                  className={`group relative rounded-3xl overflow-hidden border border-indigo-500/20 dark:border-indigo-500/20 border-slate-300 bg-slate-900/50 dark:bg-slate-900/50 bg-white/80 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/15 flex flex-col justify-end ${colSpanClass}`}
+                  className={`group relative rounded-3xl overflow-hidden border border-indigo-500/20 dark:border-indigo-500/20 border-slate-300 bg-slate-900/50 dark:bg-slate-900/50 bg-white/80 backdrop-blur-xl transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl hover:shadow-cyan-500/15 flex flex-col justify-end w-[85vw] max-w-[360px] sm:max-w-[420px] shrink-0 snap-center h-[420px] md:w-auto md:max-w-none md:shrink md:h-auto ${colSpanClass}`}
                 >
                   {/* Background Image with 3D Depth Zoom */}
                   <div className="absolute inset-0 overflow-hidden bg-slate-950">
@@ -84,7 +92,8 @@ export const ProjectsSection = () => {
                       alt={project.title}
                       className="w-full h-full object-cover object-top group-hover:scale-105 group-hover:rotate-0.5 transition-transform duration-700 opacity-75 group-hover:opacity-90"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = './assets/images/bg.jpg';
+                        (e.target as HTMLImageElement).src =
+                          "./assets/images/bg.jpg";
                       }}
                     />
                     {/* Multi-stage gradient scrim */}
@@ -158,11 +167,19 @@ export const ProjectsSection = () => {
           </AnimatePresence>
         </div>
 
-        {/* Footer Note */}
-        <div className="text-center mt-12 text-xs text-slate-500 flex items-center justify-center gap-2">
-          <Layers className="w-4 h-4 text-cyan-400" />
-          <span>Asymmetric 3D bento gallery featuring active production client and startup platforms.</span>
+        {/* Mobile Swipe Hint */}
+        <div className="flex md:hidden items-center justify-center gap-2 mt-4 text-xs font-mono text-cyan-400/80">
+          <span>← Swipe to explore all projects ({filteredProjects.length}) →</span>
         </div>
+
+        {/* Footer Note */}
+        {/* <div className="text-center mt-12 text-xs text-slate-500 flex items-center justify-center gap-2">
+          <Layers className="w-4 h-4 text-cyan-400" />
+          <span>
+            Asymmetric 3D bento gallery featuring active production client and
+            startup platforms.
+          </span>
+        </div> */}
       </div>
     </section>
   );

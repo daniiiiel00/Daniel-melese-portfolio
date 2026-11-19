@@ -24,11 +24,23 @@ export const ContactSection = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const mailtoUrl = `mailto:${personalInfo.email}?subject=${encodeURIComponent(
-      formData.subject || "Full Stack Engineering Inquiry",
-    )}&body=${encodeURIComponent(`Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`)}`;
 
-    window.location.href = mailtoUrl;
+    const messageParts = [
+      `👋 New message from Daniel's Portfolio:`,
+      ``,
+      `👤 Name: ${formData.name}`,
+      `📧 Email: ${formData.email}`,
+      formData.subject ? `📌 Subject: ${formData.subject}` : null,
+      ``,
+      `💬 Message:`,
+      formData.message,
+    ].filter(Boolean);
+
+    const formattedMessage = messageParts.join("\n");
+    const telegramUrl = `https://t.me/Andro_medaaaaa?text=${encodeURIComponent(formattedMessage)}`;
+
+    // Open Telegram with pre-filled message
+    window.open(telegramUrl, "_blank", "noopener,noreferrer");
     setSubmitted(true);
   };
 
@@ -72,12 +84,32 @@ export const ContactSection = () => {
               </h3>
 
               <div className="space-y-4">
+                {/* Telegram Direct */}
+                <a
+                  href="https://t.me/Andro_medaaaaa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/60 dark:bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 dark:border-slate-800/80 light:border-slate-200 hover:border-cyan-400/50 transition-all group shadow-sm"
+                >
+                  <div className="p-3 rounded-xl bg-cyan-500/10 text-cyan-400 group-hover:text-cyan-300">
+                    <Send className="w-5 h-5" />
+                  </div>
+                  <div className="overflow-hidden">
+                    <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-500">
+                      Telegram Instant Message
+                    </p>
+                    <p className="text-sm font-bold text-white dark:text-white light:text-slate-900 group-hover:text-cyan-400 truncate">
+                      @Andro_medaaaaa
+                    </p>
+                  </div>
+                </a>
+
                 {/* Email */}
                 <a
                   href={`mailto:${personalInfo.email}`}
                   className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/60 dark:bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 dark:border-slate-800/80 light:border-slate-200 hover:border-cyan-400/50 transition-all group shadow-sm"
                 >
-                  <div className="p-3 rounded-xl bg-cyan-500/10 text-cyan-400 group-hover:text-cyan-300">
+                  <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-400 group-hover:text-indigo-300">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div className="overflow-hidden">
@@ -110,7 +142,7 @@ export const ContactSection = () => {
 
                 {/* Location */}
                 <div className="flex items-center gap-4 p-4 rounded-2xl bg-slate-950/60 dark:bg-slate-950/60 light:bg-slate-50 border border-slate-800/80 dark:border-slate-800/80 light:border-slate-200 shadow-sm">
-                  <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-400">
+                  <div className="p-3 rounded-xl bg-purple-500/10 text-purple-400">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
@@ -129,31 +161,40 @@ export const ContactSection = () => {
                 <p className="text-xs font-mono uppercase text-slate-400 dark:text-slate-400 light:text-slate-500 mb-3">
                   Verified Developer Profiles
                 </p>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 flex-wrap">
+                  {/* <a
+                    href="https://t.me/Andro_medaaaaa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-950/80 dark:bg-slate-950/80 light:bg-slate-100 border border-slate-800 dark:border-slate-800 light:border-slate-300 hover:border-cyan-400/50 text-slate-300 dark:text-slate-300 light:text-slate-800 hover:text-white transition-all text-xs font-semibold"
+                  >
+                    <Send className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>Telegram</span>
+                  </a> */}
                   <a
                     href={personalInfo.github}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-950/80 dark:bg-slate-950/80 light:bg-slate-100 border border-slate-800 dark:border-slate-800 light:border-slate-300 hover:border-cyan-400/50 text-slate-300 dark:text-slate-300 light:text-slate-800 hover:text-white transition-all text-xs font-semibold"
+                    className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-950/80 dark:bg-slate-950/80 light:bg-slate-100 border border-slate-800 dark:border-slate-800 light:border-slate-300 hover:border-cyan-400/50 text-slate-300 dark:text-slate-300 light:text-slate-800 hover:text-white transition-all text-xs font-semibold"
                   >
-                    <Github className="w-4 h-4 text-cyan-400" />
+                    <Github className="w-3.5 h-3.5 text-cyan-400" />
                     <span>GitHub</span>
                   </a>
                   <a
                     href={personalInfo.linkedin}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-950/80 dark:bg-slate-950/80 light:bg-slate-100 border border-slate-800 dark:border-slate-800 light:border-slate-300 hover:border-indigo-400/50 text-slate-300 dark:text-slate-300 light:text-slate-800 hover:text-white transition-all text-xs font-semibold"
+                    className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-950/80 dark:bg-slate-950/80 light:bg-slate-100 border border-slate-800 dark:border-slate-800 light:border-slate-300 hover:border-indigo-400/50 text-slate-300 dark:text-slate-300 light:text-slate-800 hover:text-white transition-all text-xs font-semibold"
                   >
-                    <Linkedin className="w-4 h-4 text-indigo-400" />
+                    <Linkedin className="w-3.5 h-3.5 text-indigo-400" />
                     <span>LinkedIn</span>
                   </a>
                   <a
                     href={personalInfo.resumeUrl}
                     download
-                    className="flex items-center gap-2 px-4 py-2.5 rounded-xl bg-slate-950/80 dark:bg-slate-950/80 light:bg-slate-100 border border-slate-800 dark:border-slate-800 light:border-slate-300 hover:border-cyan-400/50 text-slate-300 dark:text-slate-300 light:text-slate-800 hover:text-white transition-all text-xs font-semibold"
+                    className="flex items-center gap-2 px-3.5 py-2 rounded-xl bg-slate-950/80 dark:bg-slate-950/80 light:bg-slate-100 border border-slate-800 dark:border-slate-800 light:border-slate-300 hover:border-cyan-400/50 text-slate-300 dark:text-slate-300 light:text-slate-800 hover:text-white transition-all text-xs font-semibold"
                   >
-                    <FileDown className="w-4 h-4 text-cyan-400" />
+                    <FileDown className="w-3.5 h-3.5 text-cyan-400" />
                     <span>Resume</span>
                   </a>
                 </div>
@@ -174,29 +215,44 @@ export const ContactSection = () => {
                 Initiate Conversation
               </h3>
               <p className="text-xs text-slate-400 dark:text-slate-400 light:text-slate-600 mb-6">
-                Send a project proposal, team inquiry, or interview schedule
-                directly to Daniel's inbox.
+                Send a project proposal, team inquiry, or message directly to
+                Daniel via Telegram.
               </p>
 
               {submitted ? (
-                <div className="p-8 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-3">
-                  <CheckCircle className="w-12 h-12 text-emerald-400 mx-auto" />
+                <div className="p-8 rounded-2xl bg-cyan-500/10 border border-cyan-500/30 text-center space-y-4">
+                  <CheckCircle className="w-12 h-12 text-cyan-400 mx-auto" />
                   <h4 className="text-lg font-bold text-white dark:text-white light:text-slate-900">
-                    Email Client Dispatched!
+                    Telegram Dispatched!
                   </h4>
-                  <p className="text-xs text-slate-300 dark:text-slate-300 light:text-slate-600">
-                    Your inquiry has been formulated and sent to{" "}
-                    <strong className="text-emerald-400">
-                      {personalInfo.email}
+                  <p className="text-xs text-slate-300 dark:text-slate-300 light:text-slate-600 max-w-md mx-auto">
+                    Your inquiry has been formatted and redirected to Daniel on
+                    Telegram at{" "}
+                    <strong className="text-cyan-400 font-mono">
+                      @Andro_medaaaaa
                     </strong>
-                    .
+                    . If your browser blocked opening the app/link, click below.
                   </p>
-                  <button
-                    onClick={() => setSubmitted(false)}
-                    className="mt-3 text-xs text-cyan-400 hover:underline font-semibold"
-                  >
-                    Send another message
-                  </button>
+                  <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+                    <a
+                      href={`https://t.me/Andro_medaaaaa?text=${encodeURIComponent(
+                        `👋 New message from Daniel's Portfolio:\n\n👤 Name: ${formData.name}\n📧 Email: ${formData.email}\n${formData.subject ? `📌 Subject: ${formData.subject}\n` : ""}\n💬 Message:\n${formData.message}`,
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs transition-colors shadow-md shadow-cyan-500/20"
+                    >
+                      <Send className="w-3.5 h-3.5" />
+                      <span>Open Telegram Directly</span>
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => setSubmitted(false)}
+                      className="px-4 py-2.5 rounded-xl bg-white/5 hover:bg-white/10 dark:bg-white/5 dark:hover:bg-white/10 light:bg-slate-100 light:hover:bg-slate-200 text-xs text-slate-300 dark:text-slate-300 light:text-slate-700 font-semibold transition-colors border border-white/10 dark:border-white/10 light:border-slate-300"
+                    >
+                      Send Another Message
+                    </button>
+                  </div>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -266,10 +322,10 @@ export const ContactSection = () => {
 
                   <button
                     type="submit"
-                    className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-bold text-sm shadow-xl shadow-indigo-500/25 transition-all duration-200 hover:scale-[1.01] active:scale-[0.99]"
+                    className="w-full flex items-center justify-center gap-2 py-4 px-6 rounded-2xl bg-gradient-to-r from-cyan-500 via-indigo-600 to-indigo-500 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-sm shadow-xl shadow-cyan-500/25 transition-all duration-200 hover:scale-[1.01] active:scale-[0.99]"
                   >
                     <Send className="w-4 h-4" />
-                    <span>Send Message Directly</span>
+                    <span>Send via Telegram (@Andro_medaaaaa)</span>
                   </button>
                 </form>
               )}
